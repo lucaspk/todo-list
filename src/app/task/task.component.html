@@ -1,0 +1,10 @@
+
+
+<input type="text" [(ngModel)]="taskName" placeholder="Type your task name">
+
+<button (click)="addTask()">Add task</button>
+
+<h1>You have <b style="color:red;">{{tasks.length}}</b> tasks to do</h1>
+<ul *ngFor="let task of tasks"> 
+  <li><input type="checkbox">{{task}}</li>
+</ul>
