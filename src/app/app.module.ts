@@ -4,6 +4,14 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TaskComponent } from './task/task.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule,
+  MatSnackBarModule
+} from '@angular/material';
+import {TaskService} from './task/task.service';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -13,9 +21,20 @@ import { TaskComponent } from './task/task.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    TaskService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

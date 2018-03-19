@@ -1,4 +1,47 @@
+mat-checkbox:checked {
+  color: #f00;
+  font-style: normal;
+  text-decoration: line-through;
+}
 
-ul {
-    list-style: none;
+button {
+  transition: transform .2s;
+  margin-left: 1.5%;
+}
+
+button:hover {
+  background-color: deeppink;
+  transform: scale(1.1);
+}
+
+i {
+  cursor: pointer;
+}
+
+div.taskInput {
+  width: 25%;
+  margin-bottom: 1.6em;
+}
+
+mat-form-field {
+  display: block;
+  margin : 0 auto;
+}
+
+div.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+div.taskButtons {
+  align-items: center;
+  display: flex;
+}
+
+div.taskButtons > button {
+  margin: 4%;
+  padding-right: 2.0em;
+  text-align: center;
 }

@@ -1,10 +1,28 @@
+<div class="container">
+  <h2>Your Tasklist:</h2>
 
+  <mat-list>
+    <mat-list-item *ngFor="let task_item of tasks; let i = index">
+      <mat-checkbox [value]="taskCheckStatus[i]"
+                    [checked]="taskCheckStatus[i]"
+                    (change)="taskCheckStatus[i] = !taskCheckStatus[i]">
+        <p [ngStyle]="setCompletedTaskStyle(i)"> {{task_item}} </p>
+      </mat-checkbox>
+      <i title="remove" (click)="removeTask(i)" class="material-icons deeppink">delete</i>
+    </mat-list-item>
+  </mat-list>
 
-<input type="text" [(ngModel)]="taskName" placeholder="Type your task name">
+  <div class="taskInput">
+    <mat-form-field *ngIf="isAddClicked">
+      <textarea matInput placeholder="Type your task name here" [(ngModel)]="task"
+                matTextareaAutosize matAutosizeMinRows="1"
+                matAutosizeMaxRows="3">
+      </textarea>
+    </mat-form-field>
+  </div>
 
-<button (click)="addTask()">Add task</button>
-
-<h1>You have <b style="color:red;">{{tasks.length}}</b> tasks to do</h1>
-<ul *ngFor="let task of tasks"> 
-  <li><input type="checkbox">{{task}}</li>
-</ul>
+  <div class="taskButtons">
+    <button mat-raised-button (click)="saveTask()">Add task</button>
+    <button mat-raised-button (click)="clearTasks()">Clean Tasklist</button>
+  </div>
+</div>
