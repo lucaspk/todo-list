@@ -7,12 +7,12 @@ import { TaskService} from '../task/task.service';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  private task = '';
+  task = '';
 
-  private isAddClicked = false;
+  isAddClicked = false;
 
-  private tasks = [];
-  private taskCheckStatus = [];
+  tasks = [];
+  taskCheckStatus = [];
 
   constructor(private taskService: TaskService) { }
 
