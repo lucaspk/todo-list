@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService} from '../task/task.service';
+import { IssueService} from './issue.service';
 
 @Component({
   selector: 'app-task',
@@ -7,14 +7,16 @@ import { TaskService} from '../task/task.service';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  task = '';
+  currentTask = '';
+  newTaskName = '';
 
   isAddClicked = false;
 
   tasks = [];
   taskCheckStatus = [];
+  editables = [];
 
-  constructor(private taskService: TaskService) { }
+  constructor(private issueService: IssueService) { }
 
   ngOnInit() {
   }
@@ -22,12 +24,13 @@ export class TaskComponent implements OnInit {
   saveTask() {
     this.isAddClicked = !this.isAddClicked;
     if (this.isAddClicked === false) {
-      if (this.task.trim() !== '') {
-        this.tasks.push(this.task);
+      if (this.currentTask.trim() !== '') {
+        this.tasks.push(this.currentTask);
         this.taskCheckStatus.push(false);
-        this.task = '';
+        this.editables.push(false);
+        this.currentTask = '';
       } else {
-        this.taskService.emptyTaskDialogMsg();
+        this.issueService.emptyTaskDialogMsg();
       }
     }
   }
@@ -36,14 +39,24 @@ export class TaskComponent implements OnInit {
     this.tasks.splice(index, 1);
   }
 
+  update(index: number) {
+    this.tasks[index] = this.newTaskName;
+    this.editTask(index);
+    this.newTaskName = '';
+  }
+
+  editTask(index: number) {
+    this.editables[index] = !this.editables[index];
+  }
+
   clearTasks() {
     if (this.tasks.length === 0) {
-      this.taskService.noTasksDialogMsg();
+      this.issueService.noTasksDialogMsg();
     }
     this.tasks = [];
   }
 
-  // Style binding to task checked
+  // Style binding to currentTask checked
   setCompletedTaskStyle(task_index) {
     const styles = {
       'color':  this.taskCheckStatus[task_index] ? 'gray' : 'black',

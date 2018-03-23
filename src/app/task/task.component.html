@@ -6,15 +6,21 @@
       <mat-checkbox [value]="taskCheckStatus[i]"
                     [checked]="taskCheckStatus[i]"
                     (change)="taskCheckStatus[i] = !taskCheckStatus[i]">
-        <p [ngStyle]="setCompletedTaskStyle(i)"> {{task_item}} </p>
       </mat-checkbox>
+      <p [ngStyle]="setCompletedTaskStyle(i)" *ngIf="!editables[i]"> {{task_item}} </p>
+      <textarea matInput placeholder="Type the new name" [(ngModel)]="newTaskName"
+              matTextareaAutosize matAutosizeMinRows="1" *ngIf="editables[i]"
+              matAutosizeMaxRows="3">
+      </textarea>
+      <i title="update" (click)="update(i)" *ngIf="editables[i]" class="material-icons deeppink">update</i>
+      <i title="edit" (click)="editTask(i)" *ngIf="!editables[i]" class="material-icons deeppink">edit</i>
       <i title="remove" (click)="removeTask(i)" class="material-icons deeppink">delete</i>
     </mat-list-item>
   </mat-list>
 
   <div class="taskInput">
     <mat-form-field *ngIf="isAddClicked">
-      <textarea matInput placeholder="Type your task name here" [(ngModel)]="task"
+      <textarea matInput placeholder="Type your task name here" [(ngModel)]="currentTask"
                 matTextareaAutosize matAutosizeMinRows="1"
                 matAutosizeMaxRows="3">
       </textarea>

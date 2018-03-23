@@ -14,6 +14,15 @@ button:hover {
   transform: scale(1.1);
 }
 
+p {
+  margin: 2vh 2vh;
+}
+
+textarea {
+  margin-left: 2vh;
+  margin-right: 2vh;
+}
+
 i {
   cursor: pointer;
 }
@@ -41,7 +50,7 @@ div.taskButtons {
 }
 
 div.taskButtons > button {
-  margin: 4%;
+  margin: 2%;
   padding-right: 2.0em;
   text-align: center;
 }

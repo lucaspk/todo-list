@@ -10,7 +10,7 @@ import {
   MatCheckboxModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule,
   MatSnackBarModule
 } from '@angular/material';
-import {TaskService} from './task/task.service';
+import {IssueService} from './task/issue.service';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 
@@ -33,7 +33,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     MatDialogModule
   ],
   providers: [
-    TaskService
+    IssueService
   ],
   bootstrap: [AppComponent]
 })
