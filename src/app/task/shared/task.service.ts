@@ -15,7 +15,7 @@ export class TaskService {
 
   constructor(private http: HttpClient, private router: Router) {
     this.headers = new HttpHeaders().set('Content-Type', 'application/json');
-    this.serverHost = "http://127.0.0.1:3000/tasks/";
+    this.serverHost = "http://127.0.0.1:3000/tasks";
   }
 
   public getAll() {
@@ -26,7 +26,7 @@ export class TaskService {
 
   // read method    
   public get(id) {
-    const endpoint = this.serverHost + id;
+    const endpoint = this.serverHost + "/" + id;
     return this.http.get(endpoint);
 
   }
@@ -38,14 +38,13 @@ export class TaskService {
   }
   // delete method    
   public delete(id){
-    console.log(id);
-    const endpoint = this.serverHost + id;
+    const endpoint = this.serverHost + "/" + id;
     return this.http.delete(endpoint);
 
   }  
   // update method    
   public update(id, body){
-    const endpoint = this.serverHost + id;
+    const endpoint = this.serverHost + "/" + id;
     return this.http.put(endpoint, body);
   }
 

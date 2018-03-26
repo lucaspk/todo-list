@@ -47,20 +47,14 @@ export class TaskComponent implements OnInit {
   }
 
   saveTask() {
-    this.totalTodo++;
     this.isAddClicked = !this.isAddClicked;
     if (this.isAddClicked === false) {
       if (this.currentTask.trim() !== '') {
         this.editables.push(false);
 
-        this.task.id = this.id;
-        this.id++;
-
         this.task.name = this.currentTask;
         this.task.isChecked = false;
         this.task.description = '';
-
-        this._tasks.push(this.task);
 
         this.totalTodo++;
 
@@ -78,7 +72,8 @@ export class TaskComponent implements OnInit {
     let result = this.taskService.post(task);
     
     result.subscribe(data =>
-      {
+      { 
+        this.getAllTasks()
         this.router.navigate(['/']);
       } 
     );
@@ -107,7 +102,6 @@ export class TaskComponent implements OnInit {
     if (this.newTaskName.trim() === "") {
       this.issueService.emptyTaskDialogMsg();
     } else {
-      console.log(this._tasks[index]);
       this._tasks[index].name = this.newTaskName;
       let task =  this._tasks[index];
       this.updateTask(task);
