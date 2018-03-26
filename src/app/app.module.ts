@@ -12,6 +12,10 @@ import {
 } from '@angular/material';
 import {IssueService} from './task/issue.service';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { TaskService } from './task/shared/task.service';
+import { routing } from './app.routing';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -22,6 +26,13 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     FormsModule,
+    routing,
+    RouterModule.forRoot([
+      {
+        path: 'tasks',
+        component: TaskComponent
+      }]),
+    HttpClientModule,
     NoopAnimationsModule,
     MatButtonModule,
     MatCardModule,
@@ -33,7 +44,8 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     MatDialogModule
   ],
   providers: [
-    IssueService
+    IssueService,
+    TaskService
   ],
   bootstrap: [AppComponent]
 })
