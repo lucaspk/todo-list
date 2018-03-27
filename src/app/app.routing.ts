@@ -12,5 +12,4 @@ const appRoutes: Routes = [
   { path: 'task/:id/edit', component: TaskComponent}
 ];
  
-// Exporta a constante routing para importarmos ela no arquivo app.module.ts
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
