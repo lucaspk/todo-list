@@ -10,8 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  private id: number = 1;
-  private isAddClicked = false;
+  isAddClicked = false;
 
   totalTodo: number = 0;
   
